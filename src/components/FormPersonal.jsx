@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-export default function FormPersonal() {
+export default function FormPersonal({ updateData }) {
 	const {
 		register,
 		formState: { errors },
@@ -8,7 +8,7 @@ export default function FormPersonal() {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		updateData('personal', data);
 	};
 
 	return (

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-export default function FormBilling() {
+export default function FormBilling({ updateData }) {
 	const {
 		register,
 		formState: { errors },
@@ -8,7 +8,7 @@ export default function FormBilling() {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		updateData('billing', data);
 	};
 
 	return (

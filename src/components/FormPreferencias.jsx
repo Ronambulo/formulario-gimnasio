@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-export default function FormPreferencias() {
+export default function FormPreferencias({ updateData }) {
 	const {
 		register,
 		formState: { errors },
@@ -8,7 +8,7 @@ export default function FormPreferencias() {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		updateData('preferencias', data);
 	};
 
 	return (

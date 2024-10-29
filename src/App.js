@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import FormPersonal from './components/FormPersonal';
 import FormContacto from './components/FormContacto';
 import FormPreferencias from './components/FormPreferencias';
@@ -40,17 +41,25 @@ function App() {
 						<button
 							className="mt-4 px-4 py-2 bg-green-500 rounded text-white w-full"
 							onClick={() => {
-								// Código para enviar los datos a una API
-								// fetch('https://api.example.com/submit', {
-								// 	method: 'POST',
-								// 	headers: {
-								// 		'Content-Type': 'application/json',
-								// 	},
-								// 	body: JSON.stringify(data),
-								// })
-								// .then(response => response.json())
-								// .then(result => console.log('Success:', result))
-								// .catch(error => console.error('Error:', error));
+								const combinedData = {
+									id: uuidv4(),
+									...data.personal,
+									...data.contacto,
+									...data.preferencias,
+									...data.billing,
+								};
+								console.log(combinedData);
+								//Código para enviar los datos a una API
+								fetch('https://api.example.com/submit', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify(combinedData),
+								})
+									.then((response) => response.json())
+									.then((result) => console.log('Success:', result))
+									.catch((error) => console.error('Error:', error));
 							}}
 						>
 							Enviar

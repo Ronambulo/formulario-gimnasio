@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-export default function FormContacto() {
+export default function FormContacto({ updateData }) {
 	const {
 		register,
 		formState: { errors },
@@ -8,7 +8,7 @@ export default function FormContacto() {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		updateData('contacto', data);
 	};
 
 	return (
